@@ -19,10 +19,10 @@
         .tab.active { background: #3b82f6; color: white; border-color: #3b82f6; }
         .stats { text-align: center; opacity: 0.7; margin-bottom: 1rem; }
         .subjects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
-        .subject-card { background: #1e293b; border-radius: 12px; padding: 1.5rem; border: 1px solid #334155; cursor: pointer; transition: all 0.3s; }
+        .subject-card { background: #1e293b; border-radius: 12px; padding: 1.5rem; border: 1px solid #334155; cursor: pointer; transition: all 0.3s; text-decoration: none; display: block; }
         .subject-card:hover { transform: translateY(-3px); border-color: #3b82f6; box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3); }
         .subject-card h3 { color: #60a5fa; margin-bottom: 0.5rem; font-size: 1.2rem; }
-        .subject-card p { opacity: 0.7; font-size: 0.85rem; }
+        .subject-card p { opacity: 0.7; font-size: 0.85rem; color: #fff; }
         .mediums { display: flex; gap: 0.3rem; margin-top: 0.8rem; }
         .medium-badge { background: #334155; color: #cbd5e1; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.7rem; }
         .stream-badge { display: inline-block; background: #3b82f6; color: white; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; margin-top: 0.5rem; }
@@ -105,64 +105,52 @@
             { name: 'Logic & Scientific Method', stream: 'Arts', sinhala: 'තර්ක ශාස්ත්‍රය හා විද්‍යාත්මක ක්‍රමය', mediums: ['S','T','E'] },
             { name: 'Malay', stream: 'Languages', sinhala: 'මැලේ', mediums: [] },
             { name: 'Mathematics', stream: 'Physical', sinhala: 'ගණිතය', mediums: ['S','T','E'] },
-            { name: 'Mechanical Technology', stream: 'Technology', sinhala: 'යාන්ත්‍රික තාක්ෂණය', mediums: [] },
-            { name: 'Oriental Music', stream: 'Arts', sinhala: 'පෙරදිග සංගීතය', mediums: ['S'] },
-            { name: 'Pali', stream: 'Languages', sinhala: 'පාලි', mediums: [] },
-            { name: 'Physics', stream: 'Science', sinhala: 'භෞතික විද්‍යාව', mediums: ['S','T','E'] },
-            { name: 'Political Science', stream: 'Arts', sinhala: 'දේශපාලන විද්‍යාව', mediums: ['S','T','E'] },
-            { name: 'Russian', stream: 'Languages', sinhala: 'රුසියානු', mediums: [] },
-            { name: 'Sanskrit', stream: 'Languages', sinhala: 'සංස්කෘත', mediums: [] },
-            { name: 'Science for Technology', stream: 'Technology', sinhala: 'තාක්ෂණවේදය සඳහා විද්‍යාව', mediums: ['S','T','E'] },
-            { name: 'Sinhala', stream: 'Languages', sinhala: 'සිංහල', mediums: ['S'] },
-            { name: 'Tamil', stream: 'Languages', sinhala: 'දෙමළ', mediums: [] },
-            { name: 'Textile & Apparel Technology', stream: 'Technology', sinhala: 'රෙදිපිළි හා ඇඟලුම් තාක්ෂණය', mediums: [] },
-            { name: 'Web Technology', stream: 'Technology', sinhala: 'වෙබ් තාක්ෂණය', mediums: [] },
-            { name: 'Western Music', stream: 'Arts', sinhala: 'අපරදිග සංගීතය', mediums: [] }
-        ].sort((a, b) => a.name.localeCompare(b.name));
+            { name: 'Mechanical Technology', stream: 'Technology', sinhala: 'යා
+cat > subject.html << 'EOF'
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject - A/L Guru</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: #fff; min-height: 100vh; }
+        .header { background: linear-gradient(135deg, #1e3a8a, #3b82f6); padding: 1.5rem; text-align: center; position: sticky; top: 0; z-index: 10; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+        .back { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: white; text-decoration: none; font-size: 1.5rem; }
+        .header h1 { font-size: 1.8rem; }
+        .header p { opacity: 0.8; font-size: 0.9rem; margin-top: 0.3rem; }
+        .container { max-width: 600px; margin: 2rem auto; padding: 0 1rem; }
+        .subtitle { text-align: center; font-size: 1.3rem; margin-bottom: 2rem; opacity: 0.9; }
+        .medium-btn { background: #1e293b; border: 2px solid #334155; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; cursor: pointer; transition: all 0.3s; text-align: center; font-size: 1.2rem; font-weight: 600; }
+        .medium-btn:hover { transform: translateY(-3px); border-color: #3b82f6; box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3); }
+        .medium-btn.sinhala { border-color: #f59e0b; }
+        .medium-btn.sinhala:hover { background: #f59e0b; color: #0f172a; }
+        .medium-btn.tamil { border-color: #10b981; }
+        .medium-btn.tamil:hover { background: #10b981; color: #0f172a; }
+        .medium-btn.english { border-color: #8b5cf6; }
+        .medium-btn.english:hover { background: #8b5cf6; color: #0f172a; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="papers.html" class="back">←</a>
+        <h1 id="subjectName">Loading...</h1>
+        <p id="subjectSinhala"></p>
+    </div>
+    <div class="container">
+        <div class="subtitle">භාෂාව තෝරන්න</div>
+        <div class="medium-btn sinhala" onclick="selectMedium('සිංහල')">
+            1. සිංහල
+        </div>
+        <div class="medium-btn tamil" onclick="selectMedium('දෙමළ')">
+            2. දෙමළ
+        </div>
+        <div class="medium-btn english" onclick="selectMedium('ඉංග්‍රීසි')">
+            3. ඉංග්‍රීසි
+        </div>
+    </div>
+    <script>
+        const url
 
-        const grid = document.getElementById('subjectsGrid');
-        const searchInput = document.getElementById('searchInput');
-        const noResults = document.getElementById('noResults');
-        const stats = document.getElementById('stats');
-        const tabs = document.querySelectorAll('.tab');
-        let currentFilter = 'all';
 
-        function renderSubjects(list) {
-            grid.innerHTML = '';
-            stats.textContent = `මුළු විෂයන්: ${list.length}`;
-            if (list.length === 0) { noResults.style.display = 'block'; return; }
-            noResults.style.display = 'none';
-            list.forEach(sub => {
-                const card = document.createElement('div');
-                card.className = 'subject-card';
-                card.onclick = function() { 
-                    alert(sub.name + ' - ' + sub.sinhala + ' - Coming Soon!');
-                };
-                const mediumBadges = sub.mediums.map(m => `<span class="medium-badge">${m}</span>`).join('');
-                card.innerHTML = `<h3>${sub.name}</h3><p>${sub.sinhala}</p><div class="mediums">${mediumBadges}</div><span class="stream-badge">${sub.stream}</span>`;
-                grid.appendChild(card);
-            });
-        }
-
-        function filterAndRender() {
-            const query = searchInput.value.toLowerCase();
-            let filtered = subjects.filter(s => s.name.toLowerCase().includes(query) || s.sinhala.includes(query));
-            if (currentFilter !== 'all') {
-                filtered = filtered.filter(s => s.stream.includes(currentFilter));
-            }
-            renderSubjects(filtered);
-        }
-
-        searchInput.addEventListener('input', filterAndRender);
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                currentFilter = tab.dataset.filter;
-                filterAndRender();
-            });
-        });
-        renderSubjects(subjects);
-    </script>
-</body>
-</html>
