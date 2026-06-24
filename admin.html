@@ -7,20 +7,21 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: #fff; min-height: 100vh; padding: 1rem; }
-        .login-box, .panel { max-width: 600px; margin: 2rem auto; background: #1e293b; padding: 2rem; border-radius: 12px; border: 1px solid #334155; }
+        .login-box, .panel { max-width: 700px; margin: 2rem auto; background: #1e293b; padding: 2rem; border-radius: 12px; border: 1px solid #334155; }
         h1 { text-align: center; color: #60a5fa; margin-bottom: 2rem; }
         input, select, textarea { width: 100%; background: #0f172a; border: 2px solid #334155; color: white; padding: 0.8rem; border-radius: 8px; margin-bottom: 1rem; font-size: 1rem; }
-        input:focus, select:focus, textarea:focus { border-color: #3b82f6; outline: none; }
-        button { width: 100%; background: linear-gradient(135deg, #3b82f6, #1e3a8a); color: white; border: none; padding: 1rem; border-radius: 8px; font-size: 1.1rem; cursor: pointer; font-weight: bold; }
+        button { width: 100%; background: linear-gradient(135deg, #3b82f6, #1e3a8a); color: white; border: none; padding: 1rem; border-radius: 8px; font-size: 1.1rem; cursor: pointer; font-weight: bold; margin-top: 0.5rem; }
         button:hover { opacity: 0.9; }
         .hidden { display: none; }
         .tab-btns { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
         .tab-btn { flex: 1; background: #334155; padding: 0.8rem; border: none; color: #94a3b8; border-radius: 8px; cursor: pointer; }
         .tab-btn.active { background: #3b82f6; color: white; }
-        .output { background: #0f172a; border: 1px solid #334155; padding: 1rem; border-radius: 8px; margin-top: 1rem; font-family: monospace; font-size: 0.85rem; white-space: pre-wrap; word-break: break-all; }
-        .copy-btn { background: #10b981; margin-top: 0.5rem; }
+        .output { background: #0f172a; border: 1px solid #334155; padding: 1rem; border-radius: 8px; margin-top: 1rem; font-family: monospace; font-size: 0.85rem; white-space: pre-wrap; word-break: break-all; max-height: 300px; overflow-y: auto; }
+        .copy-btn { background: #10b981; }
         label { display: block; margin-bottom: 0.3rem; color: #94a3b8; font-size: 0.9rem; }
         .success { background: #065f46; color: #10b981; padding: 1rem; border-radius: 8px; margin-top: 1rem; text-align: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -35,73 +36,88 @@
         <h1>⚡ A/L Guru Admin</h1>
         
         <div class="tab-btns">
-            <button class="tab-btn active" onclick="switchTab('paper')">📄 Paper Add</button>
-            <button class="tab-btn" onclick="switchTab('note')">📝 Short Note Add</button>
+            <button class="tab-btn active" onclick="switchTab('paper', event)">📄 Paper Add</button>
+            <button class="tab-btn" onclick="switchTab('note', event)">📝 Short Note Add</button>
         </div>
 
-        <!-- Paper Form -->
         <div id="paperForm">
-            <label>විෂය</label>
-            <select id="paperSubject">
-                <option value="">විෂය තෝරන්න</option>
-                <option value="Physics">Physics - භෞතික විද්‍යාව</option>
-                <option value="Chemistry">Chemistry - රසායන විද්‍යාව</option>
-                <option value="Biology">Biology - ජීව විද්‍යාව</option>
-                <option value="Combined Mathematics">Combined Mathematics - සංයුක්ත ගණිතය</option>
-                <option value="Accounting">Accounting - ගිණුම්කරණය</option>
-                <option value="Economics">Economics - ආර්ථික විද්‍යාව</option>
-                <option value="Business Studies">Business Studies - ව්‍යාපාර අධ්‍යයනය</option>
-                <option value="ICT">ICT - තොරතුරු තාක්ෂණය</option>
-            </select>
+            <div class="grid">
+                <div>
+                    <label>විෂය</label>
+                    <select id="paperSubject">
+                        <option value="">විෂය තෝරන්න</option>
+                        <option value="Physics">Physics</option>
+                        <option value="Chemistry">Chemistry</option>
+                        <option value="Biology">Biology</option>
+                        <option value="Combined Mathematics">Combined Maths</option>
+                        <option value="Accounting">Accounting</option>
+                        <option value="Economics">Economics</option>
+                        <option value="Business Studies">Business Studies</option>
+                        <option value="ICT">ICT</option>
+                    </select>
+                </div>
+                <div>
+                    <label>භාෂාව</label>
+                    <select id="paperMedium">
+                        <option value="Sinhala">Sinhala</option>
+                        <option value="English">English</option>
+                        <option value="Tamil">Tamil</option>
+                    </select>
+                </div>
+            </div>
 
-            <label>භාෂාව</label>
-            <select id="paperMedium">
-                <option value="Sinhala">Sinhala</option>
-                <option value="English">English</option>
-                <option value="Tamil">Tamil</option>
-            </select>
-
-            <label>අවුරුද්ද</label>
-            <input type="number" id="paperYear" placeholder="2024" value="2024">
+            <div class="grid">
+                <div>
+                    <label>අවුරුද්ද</label>
+                    <input type="number" id="paperYear" placeholder="2024" value="2024">
+                </div>
+                <div>
+                    <label>Paper Type</label>
+                    <select id="paperType">
+                        <option value="Past Paper">Past Paper</option>
+                        <option value="Model Paper">Model Paper</option>
+                        <option value="School Paper">School Paper</option>
+                    </select>
+                </div>
+            </div>
 
             <label>PDF Link</label>
-            <input type="text" id="paperLink" placeholder="https://drive.google.com/... or papers/physics/2024.pdf">
+            <input type="text" id="paperLink" placeholder="https://drive.google.com/... හෝ papers/physics/2024.pdf">
 
-            <button onclick="generatePaperCode()">Generate Code</button>
+            <button onclick="generatePaperCode()">⚡ Generate JSON Code</button>
             <div id="paperOutput" class="hidden">
                 <div class="output" id="paperCode"></div>
                 <button class="copy-btn" onclick="copyCode('paperCode')">📋 Copy Code</button>
-                <div class="success">✅ Code එක Copy කරලා `papers.json` එකේ Paste කරපන්!</div>
+                <div class="success">✅ Copy කරලා `papers.json` එකේ Array එක ඇතුලේ Paste කරපන්!</div>
             </div>
         </div>
 
-        <!-- Note Form -->
         <div id="noteForm" class="hidden">
             <label>විෂය</label>
             <select id="noteSubject">
                 <option value="">විෂය තෝරන්න</option>
-                <option value="Physics">Physics - භෞතික විද්‍යාව</option>
-                <option value="Chemistry">Chemistry - රසායන විද්‍යාව</option>
-                <option value="Biology">Biology - ජීව විද්‍යාව</option>
+                <option value="Physics">Physics</option>
+                <option value="Chemistry">Chemistry</option>
+                <option value="Biology">Biology</option>
             </select>
 
             <label>පාඩම / Topic</label>
             <input type="text" id="noteTopic" placeholder="උදා: Motion, Organic Chemistry">
 
-            <label>Short Note Link / Text</label>
-            <textarea id="noteContent" rows="4" placeholder="https://... හෝ Note එකේ Text එක"></textarea>
+            <label>Note Link / PDF</label>
+            <input type="text" id="noteLink" placeholder="https://drive.google.com/...">
 
-            <button onclick="generateNoteCode()">Generate Code</button>
+            <button onclick="generateNoteCode()">⚡ Generate JSON Code</button>
             <div id="noteOutput" class="hidden">
                 <div class="output" id="noteCode"></div>
                 <button class="copy-btn" onclick="copyCode('noteCode')">📋 Copy Code</button>
-                <div class="success">✅ Code එක Copy කරලා `notes.json` එකේ Paste කරපන්!</div>
+                <div class="success">✅ Copy කරලා `notes.json` එකේ Paste කරපන්!</div>
             </div>
         </div>
     </div>
 
     <script>
-        const ADMIN_PASS = 'alguru2026'; // මේක උඹේ Password එක. ඕන නම් මාරු කරපන්
+        const ADMIN_PASS = 'alguru2026';
 
         function login() {
             if (document.getElementById('password').value === ADMIN_PASS) {
@@ -112,7 +128,7 @@
             }
         }
 
-        function switchTab(tab) {
+        function switchTab(tab, event) {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             event.target.classList.add('active');
             document.getElementById('paperForm').classList.toggle('hidden', tab !== 'paper');
@@ -123,10 +139,11 @@
             const subject = document.getElementById('paperSubject').value;
             const medium = document.getElementById('paperMedium').value;
             const year = document.getElementById('paperYear').value;
+            const type = document.getElementById('paperType').value;
             const link = document.getElementById('paperLink').value;
             
             if (!subject || !year || !link) {
-                alert('⚠️ ඔක්කොම Fill කරපන්!');
+                alert('⚠️ විෂය, අවුරුද්ද, Link ඔක්කොම Fill කරපන්!');
                 return;
             }
 
@@ -134,6 +151,7 @@
     "subject": "${subject}",
     "medium": "${medium}",
     "year": ${year},
+    "type": "${type}",
     "link": "${link}"
   },`;
             
@@ -144,9 +162,9 @@
         function generateNoteCode() {
             const subject = document.getElementById('noteSubject').value;
             const topic = document.getElementById('noteTopic').value;
-            const content = document.getElementById('noteContent').value;
+            const link = document.getElementById('noteLink').value;
             
-            if (!subject || !topic || !content) {
+            if (!subject || !topic || !link) {
                 alert('⚠️ ඔක්කොම Fill කරපන්!');
                 return;
             }
@@ -154,7 +172,7 @@
             const code = `  {
     "subject": "${subject}",
     "topic": "${topic}",
-    "content": "${content}"
+    "link": "${link}"
   },`;
             
             document.getElementById('noteCode').textContent = code;
@@ -163,9 +181,8 @@
 
         function copyCode(id) {
             navigator.clipboard.writeText(document.getElementById(id).textContent);
-            alert('✅ Copy කරා! දැන් Paste කරපන්');
+            alert('✅ Copy කරා! දැන් papers.json එකේ Paste කරපන්');
         }
     </script>
 </body>
 </html>
-
