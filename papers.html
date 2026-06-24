@@ -46,7 +46,7 @@
             <div class="tab" data-filter="Technology">Technology</div>
             <div class="tab" data-filter="Languages">Languages</div>
         </div>
-        <div class="stats" id="stats">මුළු විෂයන්: 72</div>
+        <div class="stats" id="stats">මුළු විෂයන්: 0</div>
         <div class="subjects-grid" id="subjectsGrid"></div>
         <div class="no-results" id="noResults">විෂයක් හමු නොවීය 😢</div>
     </div>
@@ -79,78 +79,5 @@
             { name: 'Electrical, Electronic & Inf. Technology', stream: 'Technology', sinhala: 'විද්‍යුත්, ඉලෙක්ට්‍රොනික හා තො. තාක්ෂණය', mediums: [] },
             { name: 'Engineering Technology', stream: 'Technology', sinhala: 'ඉංජිනේරු තාක්ෂණවේදය', mediums: ['S','T'] },
             { name: 'English', stream: 'Languages', sinhala: 'ඉංග්‍රීසි', mediums: [] },
-            { name: 'Food Technology', stream: 'Technology', sinhala: 'ආහාර තාක්ෂණය', mediums: [] },
-            { name: 'French', stream: 'Languages', sinhala: 'ප්‍රංශ', mediums: [] },
-            { name: 'General English', stream: 'Common', sinhala: 'සාමාන්‍ය ඉංග්‍රීසි', mediums: [] },
-            { name: 'Geography', stream: 'Arts', sinhala: 'භූගෝල විද්‍යාව', mediums: ['S','T'] },
-            { name: 'German', stream: 'Languages', sinhala: 'ජර්මන්', mediums: [] },
-            { name: 'Greek', stream: 'Languages', sinhala: 'ග්‍රීක', mediums: [] },
-            { name: 'Greek & Roman Civilization', stream: 'Arts', sinhala: 'ග්‍රීක හා රෝම ශිෂ්ටාචාරය', mediums: [] },
-            { name: 'Higher Mathematics', stream: 'Physical', sinhala: 'උසස් ගණිතය', mediums: ['S','T','E'] },
-            { name: 'Hindi', stream: 'Languages', sinhala: 'හින්දි', mediums: [] },
-            { name: 'Hindu Civilization', stream: 'Arts', sinhala: 'හින්දු ශිෂ්ටාචාරය', mediums: [] },
-            { name: 'Hinduism', stream: 'Arts', sinhala: 'හින්දු ධර්මය', mediums: ['S','T','E'] },
-            { name: 'History', stream: 'Arts', sinhala: 'ඉතිහාසය', mediums: [] },
-            { name: 'History of Europe', stream: 'Arts', sinhala: 'යුරෝපා ඉතිහාසය', mediums: ['S','T','E'] },
-            { name: 'History of India', stream: 'Arts', sinhala: 'ඉන්දියානු ඉතිහාසය', mediums: ['S','T','E'] },
-            { name: 'History of Modern World', stream: 'Arts', sinhala: 'නූතන ලෝක ඉතිහාසය', mediums: ['S','T','E'] },
-            { name: 'History of Sri Lanka', stream: 'Arts', sinhala: 'ශ්‍රී ලංකා ඉතිහාසය', mediums: ['S','T','E'] },
-            { name: 'Home Economics', stream: 'Arts', sinhala: 'ගෘහ ආර්ථික විද්‍යාව', mediums: [] },
-            { name: 'Information & Communication Technology', stream: 'All Streams', sinhala: 'තොරතුරු හා සන්නිවේදන තාක්ෂණය', mediums: ['S','T','E'] },
-            { name: 'Islam', stream: 'Arts', sinhala: 'ඉස්ලාම් ධර්මය', mediums: [] },
-            { name: 'Islam Civilization', stream: 'Arts', sinhala: 'ඉස්ලාමීය ශිෂ්ටාචාරය', mediums: ['T'] },
-            { name: 'Japanese', stream: 'Languages', sinhala: 'ජපන්', mediums: [] },
-            { name: 'Korean', stream: 'Languages', sinhala: 'කොරියානු', mediums: [] },
-            { name: 'Latin', stream: 'Languages', sinhala: 'ලතින්', mediums: [] },
-            { name: 'Logic & Scientific Method', stream: 'Arts', sinhala: 'තර්ක ශාස්ත්‍රය හා විද්‍යාත්මක ක්‍රමය', mediums: ['S','T','E'] },
-            { name: 'Malay', stream: 'Languages', sinhala: 'මැලේ', mediums: [] },
-            { name: 'Mathematics', stream: 'Physical', sinhala: 'ගණිතය', mediums: ['S','T','E'] },
-            { name: 'Mechanical Technology', stream: 'Technology', sinhala: 'යා
-cat > subject.html << 'EOF'
-<!DOCTYPE html>
-<html lang="si">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subject - A/L Guru</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: #fff; min-height: 100vh; }
-        .header { background: linear-gradient(135deg, #1e3a8a, #3b82f6); padding: 1.5rem; text-align: center; position: sticky; top: 0; z-index: 10; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
-        .back { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: white; text-decoration: none; font-size: 1.5rem; }
-        .header h1 { font-size: 1.8rem; }
-        .header p { opacity: 0.8; font-size: 0.9rem; margin-top: 0.3rem; }
-        .container { max-width: 600px; margin: 2rem auto; padding: 0 1rem; }
-        .subtitle { text-align: center; font-size: 1.3rem; margin-bottom: 2rem; opacity: 0.9; }
-        .medium-btn { background: #1e293b; border: 2px solid #334155; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; cursor: pointer; transition: all 0.3s; text-align: center; font-size: 1.2rem; font-weight: 600; }
-        .medium-btn:hover { transform: translateY(-3px); border-color: #3b82f6; box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3); }
-        .medium-btn.sinhala { border-color: #f59e0b; }
-        .medium-btn.sinhala:hover { background: #f59e0b; color: #0f172a; }
-        .medium-btn.tamil { border-color: #10b981; }
-        .medium-btn.tamil:hover { background: #10b981; color: #0f172a; }
-        .medium-btn.english { border-color: #8b5cf6; }
-        .medium-btn.english:hover { background: #8b5cf6; color: #0f172a; }
-    </style>
-</head>
-<body>
-    <div class="header">
-        <a href="papers.html" class="back">←</a>
-        <h1 id="subjectName">Loading...</h1>
-        <p id="subjectSinhala"></p>
-    </div>
-    <div class="container">
-        <div class="subtitle">භාෂාව තෝරන්න</div>
-        <div class="medium-btn sinhala" onclick="selectMedium('සිංහල')">
-            1. සිංහල
-        </div>
-        <div class="medium-btn tamil" onclick="selectMedium('දෙමළ')">
-            2. දෙමළ
-        </div>
-        <div class="medium-btn english" onclick="selectMedium('ඉංග්‍රීසි')">
-            3. ඉංග්‍රීසි
-        </div>
-    </div>
-    <script>
-        const url
-
-
+            { name: 'Food
+cp papers.html ~/storage/downloads/
